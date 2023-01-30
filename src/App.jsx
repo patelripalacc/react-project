@@ -1,9 +1,11 @@
 import { Component } from "react";
 import React from "react";
 import "./App.css";
+import FilmsList from "./components/filmsList";
 
-//Creating constructor for the App class
+
 class App extends Component {
+  //Creating constructor for the App class
   constructor(props) {
     super(props);
     //In the body of the constructor, assign an object to a property called state
@@ -49,6 +51,7 @@ class App extends Component {
             return <li key={`${item}${index}`}>{item}</li>;
           })}
         </ul>
+        <FilmsList />
       </div>
     );
   }
