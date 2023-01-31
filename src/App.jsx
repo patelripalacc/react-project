@@ -1,60 +1,44 @@
-import { Component } from "react";
+import { useState } from "react";
 import React from "react";
 import "./App.css";
 import FilmsList from "./components/filmsList";
+import "./components/filmsList.css";
 
+function App(props) {
+  const [list, setList] = useState([]); //(["ready", "set", "GO"]);
+  const [text, setText] = useState("");
 
-class App extends Component {
-  //Creating constructor for the App class
-  constructor(props) {
-    super(props);
-    //In the body of the constructor, assign an object to a property called state
-    this.state = {
-      //On the state object, add two properties: list , text
-      //Assign list as the array:
-      list: ["ready", "set", "GO"],
-      //Assign text as an empty string
-      text: "",
-    };
-    //In the constructor, bind this to the this.onSubmit method
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  //Create a method named onSubmit on the App class
-  //Receive the HTMLSubmitEvent as a parameter
-  onSubmit(event) {
-    //Call the preventDefault() method on the parameter event
+  function onSubmit(event) {
     event.preventDefault();
-    //Call this.setState() to update the this.state.list value to a new array contains all of the previous list items and the current this.state.text
-    let newList = [...this.state.list, this.state.text];
-    this.setState({ list: newList, text: "" });
+
+    let newList = [...list, text];
+    setList(newList);
+    setText("");
   }
-  //Rendering Lists
-  render() {
-    return (
-      <div>
-        <h1>Hello World</h1>
-        {/* Add a onSubmit prop to the form element that is set to the method this.onSubmit */}
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="text"
-            id="text"
-            value={this.state.text}
-            // Add an onChange prop to the input that is set to a function this.steState() that will: call to update the value that is in input.
-            onChange={(event) => this.setState({ text: event.target.value })}
-          />
-          <button type="submit">Add</button>
-        </form>
-        <ul>
-          {/* Rendering Lists to map each item on list to Assign li as a child of ul and Assign a unique key to each li. */}
-          {this.state.list.map((item, index) => {
-            return <li key={`${item}${index}`}>{item}</li>;
-          })}
-        </ul>
-        <FilmsList />
-      </div>
-    );
-  }
+
+  return (
+    <div>
+      <h1 className="text-center">Studio Ghibli Films</h1>
+      {/* Add a onSubmit prop to the form element that is set to the method onSubmit */}
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="text"
+          id="text"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <ul>
+        {/* Rendering Lists to map each item on list to Assign li as a child of ul and Assign a unique key to each li. */}
+        {list.map((item, index) => {
+          return <li key={`${item}${index}`}>{item}</li>;
+        })}
+      </ul>
+      <FilmsList />
+    </div>
+  );
 }
 
 export default App;
