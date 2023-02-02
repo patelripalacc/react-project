@@ -1,0 +1,53 @@
+body {
+    background-color: #282c34;
+    color: antiquewhite;
+}
+li{
+    list-style: none;
+}
+.tiles{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.text-center{
+    text-align: center;
+}
+.loading{
+    font-size: larger;
+}
+a {
+  color: red;
+}
+b {
+    color: rgb(31, 206, 212);
+}
+h1 {
+  font-size: 50px;
+  color: aqua;
+}
+h2 {
+    font-size: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    color: rgb(18, 202, 209);
+}
+
+.Form1 {
+    text-align: center;
+    color: rgb(18, 202, 209);
+    font-size: 20px;
+}
+label {
+    margin-right: 10px;
+}
+.form-group{
+    font-size: 1.2rem;
+}
+.form-group > select {
+    font-size: inherit;
+}
