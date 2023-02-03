@@ -1,10 +1,11 @@
 // import "./App.css";
 import "./components/filmsList.css";
 import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
-import { HomePage, FilmsPage } from "./pages";
+import { HomePage, FilmsPage, SingleFilmPage } from "./pages";
 import "./pages/filmsList.css"
 
 import React from "react";
+import singleFilmPage from "./pages/singlefilm.page";
 
 function App(props) {
   return (
@@ -17,11 +18,15 @@ function App(props) {
           <li>
             <NavLink to="films">Films</NavLink>
           </li>
+          {/* <li>
+            <NavLink to="film">Film</NavLink>
+          </li> */}
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="films" element={<FilmsPage />} />
+        <Route path="films/:id" element={<SingleFilmPage />} />
       </Routes>
     </BrowserRouter>
   );

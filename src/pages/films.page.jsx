@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { filterFilmsByDirector, getListOf } from "../helpers/film.helpers";
+import {
+  filterFilmsByDirector,
+  getListOf,
+  getFilmStats,
+} from "../helpers/film.helpers";
+import { Link } from "react-router-dom";
 
 export default function FilmsPage(props) {
   const [list, setList] = useState([]);
@@ -23,6 +28,7 @@ export default function FilmsPage(props) {
 
   const filmsByDirector = filterFilmsByDirector(list, searchDirector);
   const directors = getListOf(list, "director");
+  let {avg_score, total, latest} = getFilmStats(filmsByDirector);
 
   return (
     <div>
@@ -47,12 +53,28 @@ export default function FilmsPage(props) {
           </select>
         </div>
       </form>
+      <div className="inFo">
+        <div>
+          <span># Of Films: </span>
+          <span>{total}</span>
+        </div>
+        <div>
+          <span>Average Rating: </span>
+          <span>{avg_score.toFixed(2)}</span>
+        </div>
+        <div>
+          <span>Latest Film: </span>
+          <span>{latest}</span>
+        </div>
+      </div>
       <ul className="tiles">
         {/* Rendering api list data to map each item on list to Assign li as a child of ul and Assign a unique key to each li. */}
         {filmsByDirector.map((film) => {
           return (
             <li key={film.id}>
-              <h2>{film.title}</h2>
+              <Link className="h2" to={`/films/${film.id}`}>
+                {film.title}
+              </Link>
               <img src={`${film.image}`} alt="Film Poster" />
               <p>
                 <b>Director:</b> {film.director}, <b>Producer: </b>
