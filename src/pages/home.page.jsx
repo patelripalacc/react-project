@@ -3,6 +3,7 @@ import React from "react";
 // import "./App.css";
 // import FilmsList from "./components/filmsList";
 import "./filmsList.css";
+import { MainLayout} from "../components";
 
 export default function HomePage(props) {
   const [list, setList] = useState([]); //(["ready", "set", "GO"]);
@@ -16,25 +17,35 @@ export default function HomePage(props) {
     setText("");
   }
 
+  function onDblClick(idx) {
+    let newList = list.filter((_, i) => i !== idx);
+    setList(newList);
+  }
+
   return (
-    <div className="home">
-      {/* Add a onSubmit prop to the form element that is set to the method onSubmit */}
+    <MainLayout>
+      <h1>Learning React</h1>
+
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          name="text"
-          id="text"
+          name="listitem"
+          id="listitem"
           value={text}
-          onChange={(event) => setText(event.target.value)}
+          onChange={(e) => setText(e.target.value)}
         />
         <button type="submit">Add</button>
       </form>
+
       <ul>
-        {/* Rendering Lists to map each item on list to Assign li as a child of ul and Assign a unique key to each li. */}
-        {list.map((item, index) => {
-          return <li key={`${item}${index}`}>{item}</li>;
+        {list.map((item, idx) => {
+          return (
+            <li key={idx} onDoubleClick={() => onDblClick(idx)}>
+              {item}
+            </li>
+          );
         })}
       </ul>
-    </div>
+    </MainLayout>
   );
 }

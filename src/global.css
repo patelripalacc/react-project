@@ -23,3 +23,47 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+/* 
+
+*/
+body {
+  background-color: #282c34;
+  color: antiquewhite;
+}
+li{
+  list-style: none;
+}
+.row {
+  color: rgb(16, 88, 211);
+}
+.tiles{
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.text-center{
+  text-align: center;
+}
+.loading{
+  font-size: larger;
+}
+a {
+color: red;
+}
+b {
+  color: rgb(31, 206, 212);
+}
+h1 {
+font-size: 50px;
+color: aqua;
+}
+h2 {
+  font-size: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  color: rgb(18, 202, 209);
+}

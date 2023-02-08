@@ -1,9 +1,6 @@
 // import "./App.css";
-import "./components/filmsList.css";
 import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 import { HomePage, FilmsPage, SingleFilmPage } from "./pages";
-import "./pages/filmsList.css"
-
 import React from "react";
 import singleFilmPage from "./pages/singlefilm.page";
 
